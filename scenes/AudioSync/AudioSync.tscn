@@ -1,0 +1,14 @@
+[gd_scene format=2]
+
+[ext_resource path="res://scenes/AudioSync/AudioSync.gd" type="Script" id=1]
+
+[node name="AudioSync" type="Viewport"]
+script = ExtResource( 1 )
+audio_listener_enable_3d = true
+
+[node name="Camera" type="Camera" parent="."]
+doppler_tracking = 2
+current = true
+
+[node name="Listener" type="Listener" parent="Camera"]
+current = true
