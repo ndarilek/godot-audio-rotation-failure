@@ -23,8 +23,8 @@ func sync_audio_to_node2d(audio, node2d: Node2D):
   audio.global_transform.origin.x = node2d.position.x
   audio.global_transform.origin.y = node2d.position.y
   audio.global_transform.origin.z = 0
-  audio.global_transform.basis = Basis()    
-  audio.rotate_z(node2d.global_rotation)
+  audio.global_transform.basis = Basis()
+  audio.rotate_y(node2d.global_rotation)
   # print(node2d.global_rotation)
 
 func _physics_process(delta):
