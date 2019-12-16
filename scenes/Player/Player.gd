@@ -11,7 +11,6 @@ func _process(delta):
     var degrees = global_rotation_degrees
     print("%s degrees" % round(degrees))
 
-
 func _physics_process(delta):
   var speed = 0
   var rotation_dir = 0
@@ -23,5 +22,5 @@ func _physics_process(delta):
     speed = delta
   var rotation_delta = rotation_speed_degrees * rotation_dir * delta 
   global_rotation_degrees += rotation_delta
-  var velocity = Vector2(0, speed).rotated(rotation)
+  var velocity = Vector2(speed, 0).rotated(rotation)
   global_position += velocity
