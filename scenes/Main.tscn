@@ -13,7 +13,7 @@ script = ExtResource( 1 )
 [node name="AudioSync" parent="." instance=ExtResource( 2 )]
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 200, 100 )
+position = Vector2( 0, 0 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Player"]
 margin_right = 40.0
@@ -22,7 +22,7 @@ focus_mode = 2
 text = "Playr>"
 
 [node name="Sound" type="Node2D" parent="."]
-position = Vector2( 100, 100 )
+position = Vector2( 10, 0 )
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Sound"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 100, 0 )
