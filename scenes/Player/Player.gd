@@ -11,12 +11,11 @@ func _process(delta):
     y *= -1
     if y == -0:
       y = 0
-    TTS.speak("%s, %s" % [x, y], true)
+    print("%s, %s" % [x, y], true)
   elif Input.is_action_just_pressed("speak_heading"):
     var degrees = global_rotation_degrees
-    TTS.speak("%s degrees" % round(degrees), true)
-  elif Input.is_action_pressed("stop_speech"):
-    TTS.stop()
+    print("%s degrees" % round(degrees), true)
+
 
 func _physics_process(delta):
   var rotation_dir = 0
@@ -25,8 +24,10 @@ func _physics_process(delta):
   elif Input.is_action_pressed("ui_right"):
     rotation_dir += 1
   if Input.is_action_pressed("ui_up"):
-    speed = delta
+    speed -= delta
+  if Input.is_action_pressed("ui_down"):
+    speed += delta
   var rotation_delta = rotation_speed_degrees * rotation_dir * delta 
   global_rotation_degrees += rotation_delta
-  var velocity = Vector2(speed, 0).rotated(rotation)
+  var velocity = Vector2(0, speed).rotated(rotation)
   global_position += velocity

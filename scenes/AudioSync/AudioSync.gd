@@ -17,13 +17,15 @@ func _ready():
   add_audio_nodes(get_tree().root)
 
 func sync_audio_to_node2d(audio, node2d: Node2D):
-  print("Audio", audio)
-  print("Node", node2d)
+  print("sync")
+  print("Audio", audio.global_transform)
+  print("Node", node2d.position)
   audio.global_transform.origin.x = node2d.position.x
-  audio.global_transform.origin.y = 0
-  audio.global_transform.origin.z = node2d.position.y
+  audio.global_transform.origin.y = node2d.position.y
+  audio.global_transform.origin.z = 0
   audio.global_transform.basis = Basis()    
-  audio.rotate_y(node2d.global_rotation)
+  audio.rotate_z(node2d.global_rotation)
+  print(node2d.global_rotation)
 
 func _physics_process(delta):
   for node in get_tree().get_nodes_in_group("3d_streams"):
