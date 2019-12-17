@@ -5,7 +5,7 @@ func add_audio_node(node):
   if node is AudioStreamPlayer3D:
     node.add_to_group("3d_streams")
   elif node is Listener:
-    node.add_to_group("3d_listeners")
+    node.get_parent().add_to_group("3d_listeners")
 
 func add_audio_nodes(node: Node):
   add_audio_node(node)
@@ -23,9 +23,12 @@ func sync_audio_to_node2d(audio, node2d: Node2D):
   audio.global_transform.origin.x = node2d.position.x
   audio.global_transform.origin.y = node2d.position.y
   audio.global_transform.origin.z = 0
-  audio.global_transform.basis = Basis()
-  audio.rotate_y(node2d.global_rotation)
-  # print(node2d.global_rotation)
+  var axis = Vector3(0, 0, 1)
+  var up = Vector3(0, 0, -1)
+  var looking_at = Vector3(1, 0, 0).rotated(axis, node2d.rotation)
+  looking_at.x += node2d.global_position.x
+  looking_at.y += node2d.global_position.y
+  audio.look_at(looking_at, up)
 
 func _physics_process(delta):
   for node in get_tree().get_nodes_in_group("3d_streams"):
